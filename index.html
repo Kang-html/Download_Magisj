@@ -56,23 +56,28 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    #photo {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Halaman Pertama -->
   <section id="subscribe">
-    <h2 style="color: green;">Welcome to Our Channel</h2> <!-- Mengubah warna utama menjadi hijau -->
-    <p>To access exclusive content and download files, please subscribe to our YouTube channel.</p>
+    <h2 style="color: green;">Welcome to the Official Kutu Moba Community</h2> <!-- Mengubah warna utama menjadi hijau -->
+    <p>For ease of downloading files, please visit and subscribe to the Kutu Moba Youtube Channel</p>
     <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
     <a href="#" id="subscribeBtn">Subscribe Now</a> <!-- Mengubah tombol menjadi warna yang menarik -->
     <div id="countdown"></div> <!-- Elemen untuk menampilkan waktu mundur -->
+    <img src="https://raw.githubusercontent.com/Kang-html/Download_Magisj/main/IMG_20240223_194116_784.jpg" alt="Foto Anda" id="photo" width="200"> <!-- Tambahkan link foto di sini -->
   </section>
 
   <!-- Halaman Kedua -->
   <section id="download" style="margin-bottom: 50px; text-align: center; display: none;">
     <h2>Download</h2>
-    <p>Thank you for subscribing! You can now download the file.</p>
+    <p>Thank you for visiting my YouTube channel and look forward to our next content. You will be directed to the download link after pressing the button below</p>
     <a href="https://t.me/kutu_Moba57/31627" id="downloadBtn" style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download Now</a>
     <div id="downloadCountdown" style="font-size: 24px; color: black; margin-top: 10px; display: none;"></div>
   </section>
