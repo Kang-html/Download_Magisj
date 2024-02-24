@@ -36,10 +36,25 @@
       background-color: #FF8C00; /* warna yang lebih cerah saat hover */
     }
 
-    #countdown {
+    #countdown, #downloadCountdown {
       font-size: 24px;
-      color: red;
+      color: black; /* Mengubah warna menjadi hitam */
       margin-top: 10px;
+    }
+
+    .loading-spinner {
+      border: 8px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 8px solid #fff;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -49,6 +64,7 @@
   <section id="subscribe">
     <h2 style="color: green;">Welcome to Our Channel</h2> <!-- Mengubah warna utama menjadi hijau -->
     <p>To access exclusive content and download files, please subscribe to our YouTube channel.</p>
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
     <a href="#" id="subscribeBtn">Subscribe Now</a> <!-- Mengubah tombol menjadi warna yang menarik -->
     <div id="countdown"></div> <!-- Elemen untuk menampilkan waktu mundur -->
   </section>
@@ -58,7 +74,7 @@
     <h2>Download</h2>
     <p>Thank you for subscribing! You can now download the file.</p>
     <a href="https://t.me/kutu_Moba57/31627" id="downloadBtn" style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download Now</a>
-    <div id="downloadCountdown" style="font-size: 24px; color: red; margin-top: 10px; display: none;"></div>
+    <div id="downloadCountdown" style="font-size: 24px; color: black; margin-top: 10px; display: none;"></div>
   </section>
 
   <script>
@@ -78,10 +94,14 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("subscribeBtn").addEventListener("click", function(event) {
         event.preventDefault();
-        window.open("https://youtube.com/@KutuMoba?sub_confirmation=1", "_blank");
-        document.getElementById("subscribe").style.display = "none";
-        document.getElementById("download").style.display = "block";
-        startCountdown(20, document.getElementById("countdown"), "https://t.me/kutu_Moba57/31627"); // Memulai animasi waktu mundur setelah tombol "Subscribe Now" ditekan
+        document.getElementById("loadingSpinner").style.display = "inline-block";
+        setTimeout(function() {
+          window.open("https://youtube.com/@KutuMoba?sub_confirmation=1", "_blank");
+          document.getElementById("loadingSpinner").style.display = "none";
+          document.getElementById("subscribe").style.display = "none";
+          document.getElementById("download").style.display = "block";
+          startCountdown(20, document.getElementById("countdown"), "https://t.me/kutu_Moba57/31627"); // Memulai animasi waktu mundur setelah tombol "Subscribe Now" ditekan
+        }, 3000); // Menunggu 3 detik sebelum membuka link YouTube
       });
 
       document.getElementById("downloadBtn").addEventListener("click", function(event) {
