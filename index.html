@@ -63,22 +63,12 @@
   <script>
     // Fungsi untuk menangani klik pada tombol Subscribe
     document.addEventListener("DOMContentLoaded", function() {
-      // Periksa apakah pengguna sudah berlangganan sebelumnya
-      var subscribed = localStorage.getItem("subscribed");
-      if (subscribed) {
-        document.getElementById("subscribe").style.display = "none";
-        document.getElementById("download").style.display = "block";
-        startCountdown(); // Mulai animasi waktu mundur jika pengguna sudah berlangganan sebelumnya
-      }
-
       document.getElementById("subscribeBtn").addEventListener("click", function(event) {
         event.preventDefault();
         window.open("https://youtube.com/@KutuMoba?sub_confirmation=1", "_blank");
-        // Set informasi bahwa pengguna sudah berlangganan
-        localStorage.setItem("subscribed", true);
         document.getElementById("subscribe").style.display = "none";
         document.getElementById("download").style.display = "block";
-        startCountdown(); // Mulai animasi waktu mundur
+        startCountdown(); // Memulai animasi waktu mundur setelah tombol ditekan
       });
 
       // Fungsi untuk memulai animasi waktu mundur
