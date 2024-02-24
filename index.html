@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe to Unlock</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #00FFFF, #FF00FF);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #subscribe {
+      text-align: center;
+      padding: 20px;
+      background-color: yellow;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    #subscribeBtn {
+      display: inline-block;
+      background-color: #FF5733; /* warna yang menarik */
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease; /* efek transisi */
+    }
+
+    #subscribeBtn:hover {
+      background-color: #FF8C00; /* warna yang lebih cerah saat hover */
+    }
+
+    #countdown {
+      font-size: 24px;
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman Pertama -->
+  <section id="subscribe">
+    <h2 style="color: green;">Welcome to Our Channel</h2> <!-- Mengubah warna utama menjadi hijau -->
+    <p>To access exclusive content and download files, please subscribe to our YouTube channel.</p>
+    <a href="#" id="subscribeBtn">Subscribe Now</a> <!-- Mengubah tombol menjadi warna yang menarik -->
+    <div id="countdown"></div> <!-- Elemen untuk menampilkan waktu mundur -->
+  </section>
+
+  <!-- Halaman Kedua -->
+  <section id="download" style="margin-bottom: 50px; text-align: center; display: none;">
+    <h2>Download</h2>
+    <p>Thank you for subscribing! You can now download the file.</p>
+    <a href="https://t.me/kutu_Moba57/31627" style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download Now</a>
+  </section>
+
+  <script>
+    // Fungsi untuk menangani klik pada tombol Subscribe
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("subscribeBtn").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.open("https://youtube.com/@KutuMoba?sub_confirmation=1", "_blank");
+        document.getElementById("subscribe").style.display = "none";
+        document.getElementById("download").style.display = "block";
+
+        // Menampilkan waktu mundur selama 20 detik
+        var countdownElement = document.getElementById("countdown");
+        var count = 20;
+        var countdownInterval = setInterval(function() {
+          countdownElement.textContent = "Redirecting in " + count + " seconds...";
+          count--;
+          if (count < 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "https://t.me/kutu_Moba57/31627";
+          }
+        }, 1000); // Setiap 1000 milidetik = 1 detik
+      });
+    });
+  </script>
+</body>
+</html>
