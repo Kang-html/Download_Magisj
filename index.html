@@ -63,13 +63,26 @@
   <script>
     // Fungsi untuk menangani klik pada tombol Subscribe
     document.addEventListener("DOMContentLoaded", function() {
+      // Periksa apakah pengguna sudah berlangganan sebelumnya
+      var subscribed = localStorage.getItem("subscribed");
+      if (subscribed) {
+        document.getElementById("subscribe").style.display = "none";
+        document.getElementById("download").style.display = "block";
+        startCountdown(); // Mulai animasi waktu mundur jika pengguna sudah berlangganan sebelumnya
+      }
+
       document.getElementById("subscribeBtn").addEventListener("click", function(event) {
         event.preventDefault();
         window.open("https://youtube.com/@KutuMoba?sub_confirmation=1", "_blank");
+        // Set informasi bahwa pengguna sudah berlangganan
+        localStorage.setItem("subscribed", true);
         document.getElementById("subscribe").style.display = "none";
         document.getElementById("download").style.display = "block";
+        startCountdown(); // Mulai animasi waktu mundur
+      });
 
-        // Menampilkan waktu mundur selama 20 detik
+      // Fungsi untuk memulai animasi waktu mundur
+      function startCountdown() {
         var countdownElement = document.getElementById("countdown");
         var count = 20;
         var countdownInterval = setInterval(function() {
@@ -80,7 +93,7 @@
             window.location.href = "https://t.me/kutu_Moba57/31627";
           }
         }, 1000); // Setiap 1000 milidetik = 1 detik
-      });
+      }
     });
   </script>
 </body>
