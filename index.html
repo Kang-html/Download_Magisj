@@ -14,7 +14,7 @@
       margin: 0;
     }
 
-    #subscribe {
+    .section {
       text-align: center;
       padding: 20px;
       background-color: yellow;
@@ -22,7 +22,7 @@
       margin-bottom: 20px;
     }
 
-    #subscribeBtn {
+    .btn {
       display: inline-block;
       background-color: #FF5733; /* warna yang menarik */
       color: #fff;
@@ -32,11 +32,11 @@
       transition: background-color 0.3s ease; /* efek transisi */
     }
 
-    #subscribeBtn:hover {
+    .btn:hover {
       background-color: #FF8C00; /* warna yang lebih cerah saat hover */
     }
 
-    #countdown, #downloadCountdown {
+    .countdown {
       font-size: 24px;
       color: black; /* Mengubah warna menjadi hitam */
       margin-top: 10px;
@@ -54,10 +54,11 @@
 
     @keyframes spin {
       0% { transform: rotate(0deg); }
+      50% { transform: rotate(180deg); }
       100% { transform: rotate(360deg); }
     }
 
-    #photo {
+    .photo {
       margin-top: 20px;
     }
   </style>
@@ -65,37 +66,23 @@
 <body>
 
   <!-- Halaman Pertama -->
-  <section id="subscribe">
-    <h2 style="color: green;">Welcome to the Official Kutu Moba Community</h2> <!-- Mengubah warna utama menjadi hijau -->
-    <p>For ease of downloading files, please visit and subscribe to the Kutu Moba Youtube Channel</p>
+  <section id="subscribe" class="section">
+    <h2 style="color: green;">Selamat datang di Komunitas Resmi Kutu Moba</h2> <!-- Mengubah warna utama menjadi hijau -->
+    <p>Untuk kemudahan mendownload file silahkan kunjungi dan subscribe Channel Youtube Kutu Moba</p>
     <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
-    <a href="#" id="subscribeBtn">Subscribe Now</a> <!-- Mengubah tombol menjadi warna yang menarik -->
-    <div id="countdown"></div> <!-- Elemen untuk menampilkan waktu mundur -->
-    <img src="https://raw.githubusercontent.com/Kang-html/Download_Magisj/main/IMG_20240223_194116_784.jpg" alt="Foto Anda" id="photo" width="200"> <!-- Tambahkan link foto di sini -->
+    <a href="#" id="subscribeBtn" class="btn">Subscribe Now</a> <!-- Mengubah tombol menjadi warna yang menarik -->
+    <div id="countdown" class="countdown"></div> <!-- Elemen untuk menampilkan waktu mundur -->
+    <img src="https://raw.githubusercontent.com/Kang-html/Download_Magisj/main/IMG_20240223_194116_784.jpg" alt="Foto Anda" class="photo" width="200"> <!-- Tambahkan link foto di sini -->
   </section>
 
   <!-- Halaman Kedua -->
-  <section id="download" style="margin-bottom: 50px; text-align: center; display: none;">
-    <h2>Download</h2>
-    <p>Thank you for visiting my YouTube channel and look forward to our next content. You will be directed to the download link after pressing the button below</p>
-    <a href="https://t.me/kutu_Moba57/31627" id="downloadBtn" style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download Now</a>
-    <div id="downloadCountdown" style="font-size: 24px; color: black; margin-top: 10px; display: none;"></div>
+  <section id="download" class="section" style="display: none;">
+    <h2 style="color: green;">Download</h2> <!-- Mengubah warna utama menjadi hijau -->
+    <p>Terima kasih telah mengunjungi saluran YouTube saya dan nantikan konten kami selanjutnya. Klik tombol di bawah untuk mengunduh file.</p>
+    <a href="https://t.me/kutu_Moba57/31627" id="downloadBtn" class="btn">LANJUTKAN</a>
   </section>
 
   <script>
-    // Fungsi untuk memulai animasi waktu mundur
-    function startCountdown(duration, countdownElement, redirectUrl) {
-      var count = duration;
-      var countdownInterval = setInterval(function() {
-        countdownElement.textContent = "Redirecting in " + count + " seconds...";
-        count--;
-        if (count < 0) {
-          clearInterval(countdownInterval);
-          window.location.href = redirectUrl;
-        }
-      }, 1000); // Setiap 1000 milidetik = 1 detik
-    }
-
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("subscribeBtn").addEventListener("click", function(event) {
         event.preventDefault();
@@ -105,15 +92,7 @@
           document.getElementById("loadingSpinner").style.display = "none";
           document.getElementById("subscribe").style.display = "none";
           document.getElementById("download").style.display = "block";
-          startCountdown(20, document.getElementById("countdown"), "https://t.me/kutu_Moba57/31627"); // Memulai animasi waktu mundur setelah tombol "Subscribe Now" ditekan
         }, 3000); // Menunggu 3 detik sebelum membuka link YouTube
-      });
-
-      document.getElementById("downloadBtn").addEventListener("click", function(event) {
-        event.preventDefault();
-        document.getElementById("downloadBtn").style.display = "none";
-        document.getElementById("downloadCountdown").style.display = "block";
-        startCountdown(10, document.getElementById("downloadCountdown"), "https://t.me/kutu_Moba57/31627"); // Memulai animasi waktu mundur setelah tombol "Download Now" ditekan
       });
     });
   </script>
